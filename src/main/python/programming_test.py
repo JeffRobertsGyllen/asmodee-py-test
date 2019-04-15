@@ -150,7 +150,9 @@ class Collection(object):
               all Genre associations, so be sure to update each Genre's
               internal representation of associated Collections appropriately.
         """
-        raise NotImplementedError()
+        self.__genres = genres
+        for newGenre in self.__genres:
+            newGenre.add_collection(self)
 
 
 # +----------------------------------------------------------------------------+
