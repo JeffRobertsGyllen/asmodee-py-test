@@ -57,7 +57,22 @@ class Genre(object):
           A Collection may be a associated with any number of Genres, and a Genre
           may be associated with any number of Collections.
     """
-    pass
+    def __init__(self, name, collection=None):
+        self.__collection = []
+
+        self.name = name
+
+        if collection:
+            self.__collection.extend(collection)
+
+    def get_collection(self):
+        return self.__collection
+
+    def add_collection(self, collection):
+        self.__collection.append(collection)
+
+    def remove_collection(self, collection):
+        self.__collection.remove(collection)
 
 
 class Collection(object):
