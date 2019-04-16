@@ -1,5 +1,5 @@
 import unittest
-from programming_test import Genre, Collection, Product
+from programming_test import Genre, Collection, Product, TaxableProduct
 
 class GenreTest(unittest.TestCase):
     def testInit_PassedInName_ReturnedFromGetter(self):
@@ -58,3 +58,10 @@ class CollectionTest(unittest.TestCase):
         sut.add_child(starWarsMinis)
 
         self.assertEqual(sut.get_children(), [starWarsMinis])
+
+class TaxableProductTest(unittest.TestCase):
+    def testInit_TaxValue_TaxAddedToPrice(self):
+        collection = Collection("")
+        sut = TaxableProduct("Eldritch Horror", 69.99, collection, 6.75)
+
+        self.assertEqual(sut.get_price(), 74.71)

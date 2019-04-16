@@ -185,6 +185,14 @@ class Collection(object):
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 
+class TaxableProduct(Product):
+    def __init__(self, name, price, collection, tax_rate):
+        Product.__init__(self, name, price, collection)
+        self.__tax_rate = tax_rate
+
+    def get_price(self):
+        return round(Product.get_price(self) * (1 + (self.__tax_rate / 100 )), 2)
+
 # +----------------------------------------------------------------------------+
 # |                                                                            |
 # |  Q4. Implement the following function "print_tree".  This function must    |
