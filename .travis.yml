@@ -5,4 +5,4 @@ install:
  - pip install pybuilder
 
 script:
- - pyb
+ - pyb -v
