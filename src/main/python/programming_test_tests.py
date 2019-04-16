@@ -23,9 +23,6 @@ class GenreTest(unittest.TestCase):
         sut.remove_collection(collection)
         self.assertEqual(sut.get_collection(), [])
 
-suite = unittest.TestLoader().loadTestsFromTestCase(GenreTest)
-unittest.TextTestRunner(verbosity=2).run(suite)
-
 class CollectionTest(unittest.TestCase):
     def testSetGenre_SetNewGenreList_SetsNewListAndUpdatesAllGenresCollectionLists(self):
         sciFi = Genre("Science Fiction")
@@ -45,6 +42,3 @@ class CollectionTest(unittest.TestCase):
         sut.add_product(arkHrr)
 
         self.assertEqual(sut.get_products(), [arkHrr])
-
-suite = unittest.TestLoader().loadTestsFromTestCase(CollectionTest)
-unittest.TextTestRunner(verbosity=2).run(suite)
