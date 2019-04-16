@@ -1,0 +1,14 @@
+{
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        "./src/main/python",
+        "-p",
+        "*_tests*.py"
+    ],
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.promptToConfigure": false,
+    "files.autoSave": "afterDelay"
+}
