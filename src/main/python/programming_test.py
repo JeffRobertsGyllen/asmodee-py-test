@@ -36,7 +36,7 @@ class Product(object):
         self.collection.add_product(self)
 
     def __unicode__(self):
-        return u"{name} (${price})".format(name=self.name, price=self.get_price())
+        return u"{name} (${price:.2f})".format(name=self.name, price=self.get_price())
 
     def get_price(self):
         return self.__price
@@ -206,7 +206,7 @@ class TaxableProduct(Product):
 # +----------------------------------------------------------------------------+
 
 
-def print_tree(collection):
+def print_tree(collection, depth=1):
     """ In the example output below, "Twilight Imperium" is the root collection,
     "Base Game" and "Expansions" are subcollections belonging to the root
     collection, and "Twilight Imperium Third Edition ($89.95)", "Shattered
@@ -221,7 +221,17 @@ def print_tree(collection):
             Shattered Empire ($59.95)
             Shards of the Throne ($59.95)
     """
-    raise NotImplementedError()
+    tab = "    "
+
+    output = collection.name + "\n"
+
+    for child in collection.get_children():
+        output += (tab * depth) + print_tree(child, depth + 1)
+
+    for product in collection.get_products():
+        output += (tab * depth) + unicode(product) + "\n"
+
+    return output
 
 
 # +----------------------------------------------------------------------------+
