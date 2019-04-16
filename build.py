@@ -13,5 +13,5 @@ default_task = "publish"
 
 
 @init
-def set_properties(project):
-    pass
+def initialize(project):
+    project.set_property("dir_source_unittest_python", "src/main/python")
