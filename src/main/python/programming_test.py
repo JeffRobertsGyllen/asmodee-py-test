@@ -57,22 +57,24 @@ class Genre(object):
           A Collection may be a associated with any number of Genres, and a Genre
           may be associated with any number of Collections.
     """
-    def __init__(self, name, collection=None):
-        self.__collection = []
+    def __init__(self, name, collections=None):
+        self.__collections = []
 
         self.name = name
 
-        if collection:
-            self.__collection.extend(collection)
+        if collections:
+            self.__collections = collections
+            for collection in collections:
+                collection.add_genre(self)
 
     def get_collection(self):
-        return self.__collection
+        return self.__collections
 
     def add_collection(self, collection):
-        self.__collection.append(collection)
+        self.__collections.append(collection)
 
     def remove_collection(self, collection):
-        self.__collection.remove(collection)
+        self.__collections.remove(collection)
 
 
 class Collection(object):
@@ -117,13 +119,16 @@ class Collection(object):
     #
 
     def add_child(self, child):
-        self.__children.append(child)
+        if child not in self.__children:
+            self.__children.append(child)
 
     def add_product(self, product):
-        self.__products.append(product)
+        if product not in self.__products:
+            self.__products.append(product)
 
     def add_genre(self, genre):
-        self.__genres.append(genre)
+        if genre not in self.__genres:
+            self.__genres.append(genre)
 
     #
     # Remover methods. These raise a ValueError if the given

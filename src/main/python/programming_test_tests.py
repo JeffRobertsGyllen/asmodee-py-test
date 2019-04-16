@@ -42,3 +42,19 @@ class CollectionTest(unittest.TestCase):
         sut.add_product(arkHrr)
 
         self.assertEqual(sut.get_products(), [arkHrr])
+
+    def testAddGenre_AddDuplicateGenre_DuplicateNotAddedToList(self):
+        sut = Collection("Descent Games")
+        dungeon = Genre("Dungeon Crawl", [sut])
+
+        sut.add_genre(dungeon)
+
+        self.assertEqual(sut.get_genres(), [dungeon])
+
+    def testAddChild_AddDuplicateChild_DuplicateNotAddedToList(self):
+        sut = Collection("Star Wars")
+        starWarsMinis = Collection("Star Wars Miniature", [], [], sut)
+
+        sut.add_child(starWarsMinis)
+
+        self.assertEqual(sut.get_children(), [starWarsMinis])
