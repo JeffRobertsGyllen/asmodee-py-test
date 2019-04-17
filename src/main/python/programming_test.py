@@ -247,6 +247,16 @@ def print_tree(collection, depth=1):
 # |        named "Descent Second Edition".                                     |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
+SELECT Product.Name AS 'Product Name', Product.Price, Collection.Name AS 'Collection Name',
+    (SELECT Genre.Name + ','
+    FROM Genre
+    INNER JOIN GenreCollection ON Genre.Id = GenreCollection.GenreId
+    INNER JOIN Collection ON Collection.Id = GenreCollection.CollectionId
+    WHERE Collection.Name = 'Descent Second Edition'
+    FOR XML PATH ('')) [Genre Names]
+FROM Product
+INNER JOIN Collection ON Product.CollectionId = Collection.Id
+WHERE Collection.Name = 'Descent Second Edition'
 
 
 # +----------------------------------------------------------------------------+
