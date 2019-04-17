@@ -247,16 +247,16 @@ def print_tree(collection, depth=1):
 # |        named "Descent Second Edition".                                     |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
-SELECT Product.Name AS 'Product Name', Product.Price, Collection.Name AS 'Collection Name',
-    (SELECT Genre.Name + ','
-    FROM Genre
-    INNER JOIN GenreCollection ON Genre.Id = GenreCollection.GenreId
-    INNER JOIN Collection ON Collection.Id = GenreCollection.CollectionId
-    WHERE Collection.Name = 'Descent Second Edition'
-    FOR XML PATH ('')) [Genre Names]
-FROM Product
-INNER JOIN Collection ON Product.CollectionId = Collection.Id
-WHERE Collection.Name = 'Descent Second Edition'
+#SELECT Product.Name AS 'Product Name', Product.Price, Collection.Name AS 'Collection Name',
+#    (SELECT Genre.Name + ','
+#    FROM Genre
+#    INNER JOIN GenreCollection ON Genre.Id = GenreCollection.GenreId
+#    INNER JOIN Collection ON Collection.Id = GenreCollection.CollectionId
+#    WHERE Collection.Name = 'Descent Second Edition'
+#    FOR XML PATH ('')) [Genre Names]
+#FROM Product
+#INNER JOIN Collection ON Product.CollectionId = Collection.Id
+#WHERE Collection.Name = 'Descent Second Edition'
 
 
 # +----------------------------------------------------------------------------+
@@ -266,3 +266,8 @@ WHERE Collection.Name = 'Descent Second Edition'
 # |       page?                                                                |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
+# I think the homepage looks pretty great. I'm not sure how I would improve on it asthetically.
+# I think it does a good job of presenting recent news stories above the fold and splashing them
+# with eye-catching art from the games. It looks great on mobile too.
+# From the technical side, I have to admit that I don't have enough experience with angular.js
+# to evaluate if it's coded well. The page always seems to work smoothly when I visit the site.
