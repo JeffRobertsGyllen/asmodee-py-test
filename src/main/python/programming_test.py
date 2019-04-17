@@ -229,17 +229,18 @@ def print_tree(collection, depth=1):
             Shattered Empire ($59.95)
             Shards of the Throne ($59.95)
     """
+    tab = "    "
 
     # Print name of this collection
     output = collection.name + "\n"
 
     # Process child collections and fully print their trees
     for child in collection.get_children():
-        output += ("\t" * depth) + print_tree(child, depth + 1)
+        output += (tab * depth) + print_tree(child, depth + 1)
 
     # Print direct child products of this collection
     for product in collection.get_products():
-        output += ("\t" * depth) + unicode(product) + "\n"
+        output += (tab * depth) + unicode(product) + "\n"
 
     return output
 
