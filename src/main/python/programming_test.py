@@ -58,20 +58,28 @@ class Genre(object):
           may be associated with any number of Collections.
     """
     def __init__(self, name, collections=None):
+        # A list of collections associated with this genre
         self.__collections = []
 
         self.name = name
 
+        # Make sure this new genre is added to all the given collections
         if collections:
             self.__collections = collections
             for collection in collections:
                 collection.add_genre(self)
 
+    # Accessors
+
     def get_collection(self):
         return self.__collections
 
+    # Adders
+
     def add_collection(self, collection):
         self.__collections.append(collection)
+
+    # Removers
 
     def remove_collection(self, collection):
         self.__collections.remove(collection)
@@ -221,15 +229,17 @@ def print_tree(collection, depth=1):
             Shattered Empire ($59.95)
             Shards of the Throne ($59.95)
     """
-    tab = "    "
 
+    # Print name of this collection
     output = collection.name + "\n"
 
+    # Process child collections and fully print their trees
     for child in collection.get_children():
-        output += (tab * depth) + print_tree(child, depth + 1)
+        output += ("\t" * depth) + print_tree(child, depth + 1)
 
+    # Print direct child products of this collection
     for product in collection.get_products():
-        output += (tab * depth) + unicode(product) + "\n"
+        output += ("\t" * depth) + unicode(product) + "\n"
 
     return output
 
